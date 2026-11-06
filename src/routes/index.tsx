@@ -85,7 +85,7 @@ function Index() {
         <div className="max-w-6xl mx-auto px-5 pb-16 pt-4 grid md:grid-cols-2 gap-10 items-center">
           <div className="order-2 md:order-1">
             <span className="inline-block text-xs font-bold uppercase tracking-widest text-primary border border-primary/40 rounded-full px-3 py-1 mb-4">Mais vendida da semana</span>
-            <h1 className="font-display text-4xl md:text-6xl leading-[1.05] uppercase">Alicate <span className="text-primary">multifuncional</span></h1>
+            <h1 className="font-display text-4xl md:text-5xl break-words leading-[1.05] uppercase">Alicate <span className="text-primary block">multiAlicate <span className="text-primary">multifuncional</span>shy;funcional</span></h1>
             <p className="mt-4 text-lg text-muted-foreground">Prende, segura e solta qualquer peça com uma mão só. Mecanismo de alavanca, dentes reforçados e punho emborrachado.</p>
             <div className="mt-6 flex items-end gap-3">
               
