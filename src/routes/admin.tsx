@@ -16,7 +16,7 @@ export const Route = createFileRoute("/admin")({
   ssr: false,
   head: () => ({
     meta: [
-      { title: "Área administrativa | Bomvink" },
+      { title: "Área administrativa | Alicate Multifuncional" },
       { name: "description", content: "Consulta de pedidos e conferência de Pix." },
       { name: "robots", content: "noindex, nofollow" },
     ],
@@ -127,8 +127,8 @@ function Pedidos({ userId }: { userId: string }) {
       {lista.length === 0 && <p className="mt-10 text-muted-foreground">Nenhum pedido aqui.</p>}
       <div className="mt-6 space-y-4">
         {lista.map((p) => {
-          const assunto = encodeURIComponent(`Pedido #${p.id.slice(0, 8).toUpperCase()} confirmado - Bomvink`);
-          const corpo = encodeURIComponent(`Olá ${p.nome},\n\nRecebemos seu Pix de ${formatarReais(p.total_centavos)} e seu pedido de ${p.quantidade} chave(s) elétrica(s) Bomvink está confirmado. Em breve enviaremos o código de rastreio.\n\nObrigado!`);
+          const assunto = encodeURIComponent(`Pedido #${p.id.slice(0, 8).toUpperCase()} confirmado - Alicate Multifuncional`);
+          const corpo = encodeURIComponent(`Olá ${p.nome},\n\nRecebemos seu Pix de ${formatarReais(p.total_centavos)} e seu pedido de ${p.quantidade} chave(s) elétrica(s) Alicate Multifuncional está confirmado. Em breve enviaremos o código de rastreio.\n\nObrigado!`);
           return (
             <article key={p.id} className="bg-card border border-border rounded-xl p-5 grid md:grid-cols-[1fr_auto] gap-4">
               <div className="text-sm space-y-1">

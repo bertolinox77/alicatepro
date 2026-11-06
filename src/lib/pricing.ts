@@ -1,5 +1,5 @@
-export const PRECO_1_CENTAVOS = 11900;
-export const PRECO_2_CENTAVOS = 18700;
+export const PRECO_1_CENTAVOS = 4990;
+export const PRECO_2_CENTAVOS = 7990;
 export const DESCONTO_PIX = 0.1;
 
 export type FormaPagamento = "pix";
