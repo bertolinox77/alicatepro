@@ -3,14 +3,15 @@ import { useEffect, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { QRCodeSVG } from "qrcode.react";
 import {
-  BatteryFull, Zap, Lightbulb, RotateCcw, Truck, ShieldCheck, Clock, Wrench, Check, Copy, QrCode, Flame,
+  Hand, Zap, Settings2, RotateCcw, Star, Layers, Truck, ShieldCheck, Clock, Wrench, Check, Copy, QrCode, Flame,
 } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Toaster } from "@/components/ui/sonner";
-import hero from "@/assets/chave-hero.jpg";
+import hero from "@/assets/alicate-hero.jpg";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { calcularTotal, formatarReais, CHAVE_PIX, PRECO_1_CENTAVOS, PRECO_2_CENTAVOS } from "@/lib/pricing";
 import { criarPedido } from "@/lib/pedidos.functions";
 import { gerarPixCopiaCola } from "@/lib/pix";
@@ -19,10 +20,10 @@ import { pedidoSchema, type PedidoInput } from "@/lib/pedidos.schema";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Chave Catraca Elétrica Bomvink 12V | Oferta Leve 2" },
-      { name: "description", content: "Chave catraca elétrica sem fio Bomvink 12V, 60Nm, 2 baterias e 7 soquetes. R$119 ou 2 por R$187. 10% off no Pix." },
-      { property: "og:title", content: "Chave Catraca Elétrica Sem Fio Bomvink 12V 60Nm" },
-      { property: "og:description", content: "Catraca elétrica sem fio 12V com 60Nm de torque, 2 baterias, LED e 7 soquetes. R$119 ou 2 por R$187, com 10% off no Pix." },
+      { title: "Alicate Multifuncional R$49,90 | Frete Grátis e 10% off no Pix" },
+      { name: "description", content: "Alicate multifuncional com mecanismo de alavanca e dentes reforçados por R$49,90 ou kit com 2 por R$79,90. Frete grátis para todo o Brasil e 10% off no Pix." },
+      { property: "og:title", content: "Alicate Multifuncional por R$49,90 com frete grátis" },
+      { property: "og:description", content: "Alicate de pressão multifuncional, ajuste rápido e pega firme. R$49,90 ou 2 por R$79,90, frete grátis e 10% off no Pix." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -49,13 +50,15 @@ function useCountdown() {
 }
 
 const beneficios = [
-  { icon: Zap, t: "60Nm de torque", d: "Força para soltar e apertar parafusos sem esforço." },
-  { icon: BatteryFull, t: "2 baterias 2000mAh", d: "Uma carrega enquanto a outra trabalha." },
-  { icon: Lightbulb, t: "LED integrado", d: "Ilumina cantos escuros do motor." },
-  { icon: RotateCcw, t: "Reversível", d: "Aperta e afrouxa com um toque." },
+  { icon: Layers, t: "Multifuncional", d: "Segura, prende, torce, corta e solta porcas e parafusos." },
+  { icon: Settings2, t: "Ajuste rápido", d: "Regule a abertura em segundos pelo parafuso traseiro." },
+  { icon: Zap, t: "Pega firme", d: "Mecanismo de alavanca trava a peça sem esforço." },
+  { icon: Hand, t: "Punho emborrachado", d: "Conforto e aderência, mesmo com a mão suja." },
+  { icon: ShieldCheck, t: "Aço resistente", d: "Dentes reforçados que não espanam com o uso." },
+  { icon: Truck, t: "Frete grátis", d: "Entrega para todo o Brasil sem custo." },
 ];
 
-const kit = ["1 Chave catraca elétrica 12V 3/8\"", "2 Baterias 2000mAh", "1 Carregador bivolt", "7 Soquetes", "1 Adaptador 1/4\""];
+const kit = ["Mordente com dentes reforçados", "Mecanismo de alavanca com trava", "Parafuso de ajuste rápido", "Alavanca de liberação instantânea", "Punho cinza e laranja emborrachado"];
 
 function Index() {
   const tempo = useCountdown();
@@ -73,7 +76,7 @@ function Index() {
       </div>
 
       <header className="max-w-6xl mx-auto px-5 py-5 flex items-center justify-between">
-        <span className="font-display text-2xl tracking-tight">BOM<span className="text-primary">VINK</span></span>
+        <span className="font-display text-2xl tracking-tight">ALICATE<span className="text-primary">PRO</span></span>
         <span className="text-xs text-muted-foreground flex items-center gap-1"><Truck className="size-4" /> Frete grátis para todo o Brasil</span>
       </header>
 
@@ -81,8 +84,8 @@ function Index() {
         <div className="max-w-6xl mx-auto px-5 pb-16 pt-4 grid md:grid-cols-2 gap-10 items-center">
           <div className="order-2 md:order-1">
             <span className="inline-block text-xs font-bold uppercase tracking-widest text-primary border border-primary/40 rounded-full px-3 py-1 mb-4">Mais vendida da semana</span>
-            <h1 className="font-display text-4xl md:text-6xl leading-[1.05] uppercase">Chave catraca elétrica <span className="text-primary">sem fio</span></h1>
-            <p className="mt-4 text-lg text-muted-foreground">Termine a manutenção do carro em minutos, até nos espaços mais apertados. 12V, 60Nm, 2 baterias e 7 soquetes.</p>
+            <h1 className="font-display text-4xl md:text-6xl leading-[1.05] uppercase">Alicate <span className="text-primary">multifuncional</span></h1>
+            <p className="mt-4 text-lg text-muted-foreground">Prende, segura e solta qualquer peça com uma mão só. Mecanismo de alavanca, dentes reforçados e punho emborrachado.</p>
             <div className="mt-6 flex items-end gap-3">
               
               <span className="font-display text-4xl text-primary">{formatarReais(PRECO_1_CENTAVOS)}</span>
@@ -104,14 +107,14 @@ function Index() {
             </div>
           </div>
           <div className="order-1 md:order-2">
-            <img src={hero} alt="Chave catraca elétrica Bomvink com baterias, carregador e soquetes" width={1024} height={1024} className="rounded-2xl shadow-glow w-full" />
+            <img src={hero} alt="Alicate multifuncional com punhos cinza e laranja" width={1024} height={1024} className="rounded-2xl shadow-glow w-full" />
           </div>
         </div>
       </section>
 
       <section className="max-w-6xl mx-auto px-5 py-16">
-        <h2 className="font-display text-3xl uppercase text-center">Por que todo mecânico quer uma</h2>
-        <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
+        <h2 className="font-display text-3xl uppercase text-center">Por que todo mundo quer um</h2>
+        <div className="mt-10 grid grid-cols-2 md:grid-cols-3 gap-4">
           {beneficios.map((b) => (
             <div key={b.t} className="bg-card border border-border rounded-xl p-5">
               <b.icon className="size-8 text-primary" />
@@ -125,7 +128,7 @@ function Index() {
       <section className="bg-secondary/50 border-y border-border">
         <div className="max-w-6xl mx-auto px-5 py-16 grid md:grid-cols-2 gap-10 items-center">
           <div>
-            <h2 className="font-display text-3xl uppercase">Kit completo na caixa</h2>
+            <h2 className="font-display text-3xl uppercase">Detalhes do alicate</h2>
             <ul className="mt-6 space-y-3">
               {kit.map((k) => (
                 <li key={k} className="flex items-center gap-3"><Check className="size-5 text-accent shrink-0" /> {k}</li>
@@ -134,7 +137,7 @@ function Index() {
           </div>
           <div className="bg-card border border-border rounded-xl p-6">
             <Wrench className="size-8 text-primary" />
-            <p className="mt-3 text-lg">Ideal para troca de óleo, freios, motor, motos e qualquer trabalho em locais apertados onde a catraca manual não gira.</p>
+            <p className="mt-3 text-lg">Ideal para mecânica, elétrica, hidráulica, marcenaria e reparos em casa. Substitui várias ferramentas na sua caixa.</p>
           </div>
         </div>
       </section>
@@ -148,10 +151,14 @@ function Index() {
         </div>
       </section>
 
+      <Avaliacoes />
+
       <Checkout qtd={qtd} setQtd={setQtd} />
 
+      <Faq />
+
       <footer className="border-t border-border py-8 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} Bomvink. Todos os direitos reservados.
+        © {new Date().getFullYear()} Alicate Pro. Todos os direitos reservados.
       </footer>
     </div>
   );
@@ -327,5 +334,53 @@ function Campo({ id, label, v, on, type = "text", required = true }: { id: strin
       <Label htmlFor={id}>{label}</Label>
       <Input id={id} type={type} value={v} onChange={on} required={required} className="h-11 bg-background" />
     </div>
+  );
+}
+
+const avaliacoes = [
+  { n: "Carlos M.", c: "Curitiba, PR", t: "Trava muito firme, soltei um parafuso espanado que nada tirava. Chegou rápido." },
+  { n: "Juliana R.", c: "Campinas, SP", t: "Comprei o kit com 2, um pra mim e um pro meu pai. Qualidade excelente." },
+  { n: "Roberto S.", c: "Londrina, PR", t: "Punho confortável e o ajuste é muito prático. Vale cada centavo." },
+];
+
+function Avaliacoes() {
+  return (
+    <section className="max-w-6xl mx-auto px-5 py-16">
+      <h2 className="font-display text-3xl uppercase text-center">Quem comprou aprova</h2>
+      <p className="text-center text-muted-foreground mt-2">Nota 4,9 de 5 · mais de 1.200 clientes</p>
+      <div className="mt-10 grid md:grid-cols-3 gap-4">
+        {avaliacoes.map((a) => (
+          <div key={a.n} className="bg-card border border-border rounded-xl p-5">
+            <div className="flex gap-0.5 text-primary">{Array.from({ length: 5 }).map((_, i) => <Star key={i} className="size-4 fill-current" />)}</div>
+            <p className="mt-3">"{a.t}"</p>
+            <p className="mt-3 text-sm font-bold">{a.n} <span className="font-normal text-muted-foreground">· {a.c}</span></p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+const perguntas = [
+  { q: "O frete é grátis mesmo?", r: "Sim, o frete é grátis para todo o Brasil." },
+  { q: "Como funciona o pagamento?", r: "O pagamento é somente por Pix, com 10% de desconto. Após conferirmos o seu Pix, enviamos a confirmação do pedido por e-mail." },
+  { q: "Qual o prazo de entrega?", r: "Enviamos após a conferência do pagamento e você recebe o código de rastreio por e-mail." },
+  { q: "Posso devolver?", r: "Sim, você tem 7 dias após o recebimento para devolver o produto." },
+  { q: "Para que serve o alicate multifuncional?", r: "Para prender, segurar, torcer e soltar peças, porcas e parafusos em mecânica, elétrica, hidráulica e reparos em geral." },
+];
+
+function Faq() {
+  return (
+    <section className="max-w-3xl mx-auto px-5 py-16">
+      <h2 className="font-display text-3xl uppercase text-center">Perguntas frequentes</h2>
+      <Accordion type="single" collapsible className="mt-8">
+        {perguntas.map((p) => (
+          <AccordionItem key={p.q} value={p.q}>
+            <AccordionTrigger>{p.q}</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground">{p.r}</AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
+    </section>
   );
 }

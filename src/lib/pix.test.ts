@@ -8,7 +8,7 @@ describe("pagamento somente Pix", () => {
     expect(pedidoSchema.shape.forma_pagamento.safeParse("pix").success).toBe(true);
     expect(pedidoSchema.shape.forma_pagamento.safeParse("cartao").success).toBe(false);
   });
-  it.each([10710, 16830])("gera Pix válido com chave fornecida e valor %i", (total) => {
+  it.each([4491, 7191])("gera Pix válido com chave fornecida e valor %i", (total) => {
     const pix = parsePix(gerarPixCopiaCola(total, "12345678-1234-1234-1234-123456789012"));
     expect(hasError(pix)).toBe(false);
     if (hasError(pix) || !isStaticPix(pix)) throw new Error("Pix inválido");
