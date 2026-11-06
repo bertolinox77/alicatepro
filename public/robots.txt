@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://bomvink-torque-duo.lovable.app/sitemap.xml
