@@ -28,3 +28,10 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- Analytics: page and route tracking goes through `src/lib/analytics.ts` (Vercel
+  Web Analytics with the collector's own pushState tracking disabled), emitted from
+  the root route only. The collector's auto-tracking reports the URL from before the
+  new route renders, so one navigation would produce a pageview for the wrong page.
